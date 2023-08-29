@@ -1,26 +1,27 @@
 #include "main.h"
-#include <stdio.h>
 /**
- * *_strncat - check the code for Holberton School students.
- *@dest:destino
- *@src:source
- *@n:integer
- * Return: Always 0.
+ * _strncat - concatenates two strings,
+ * @dest: destination.
+ * @src: source.
+ * @n: amount of bytes used from src.
+ * Return: the pointer to dest.
  */
 char *_strncat(char *dest, char *src, int n)
 {
-	char *a = dest;
+	int count = 0, count2 = 0;
 
-	while (*dest)
+	while (*(dest + count) != '\0')
 	{
-		dest++;
+		count++;
 	}
-	while (n-- && src)
+
+	while (count2 < n)
 	{
-		*dest = *src;
-		dest++;
-		src++;
+		*(dest + count) = *(src + count2);
+		if (*(src + count2) == '\0')
+			break;
+		count++;
+		count2++;
 	}
-	*dest = '\0';
-	return (a);
+	return (dest);
 }
