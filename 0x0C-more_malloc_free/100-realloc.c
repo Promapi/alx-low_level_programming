@@ -1,64 +1,31 @@
 #include "main.h"
-
+#include <stdlib.h>
 /**
- * _memcpy - copy a memory area
- * @dest: a pointer to the start of the target area
- * @src: a pointer to the start of the source area
- * @n: the number of bytes to copy
+ * _realloc - reallocates a memory block.
+ * @ptr: pointer to the memory previously allocated.
+ * @old_size: size, in bytes, of the allocated space of ptr.
+ * @new_size: new size, in bytes, of the new memory block.
  *
- * Description: This function copies n bytes from memory area src to memory
- * area dest. The memory areas must not overlap.
- *
- * Return: a pointer to dest
- */
-char *_memcpy(char *dest, char *src, unsigned int n)
-{
-	unsigned int i = 0;
-
-	for (i = 0; i < n; ++i, ++src)
-		dest[i] = *src;
-	return (dest);
-}
-
-
-/**
- * _realloc - reallocate a memory block using malloc and free
- * @ptr: a pointer to the memory previously allocated with a call to malloc
- * @old_size: the size, in bytes, of the allocated space for ptr
- * @new_size: the new size, in bytes, of the new memory block
- *
- * Description: The contents will be copied to the newly allocated space in
- * the range from the start of ptr up to the minimum of the old and new sizes.
- * If new_size is greater than old_size, the additional memory will not be
- * initialized.
- *
- * Return: If new_size is equal to old_size, do nothing and return ptr. If
- * new_size is equal to zero and ptr is not NULL, call free(ptr) and return
- * NULL. If memory allocation fails, return NULL. In all other cases, return
- * a pointer to the newly allocated memory.
+ * Return: ptr.
+ * if new_size == old_size, returns ptr without changes.
+ * if malloc fails, returns NULL.
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	void *new_ptr;
-
-	if (new_size == old_size)
-		return (ptr);
-
-	if (!ptr)
-		return (malloc(new_size));
-
-	if (!new_size)
+	if (new_size == 0 && ptr != NULL)
 	{
 		free(ptr);
 		return (NULL);
 	}
 
-	new_ptr = malloc(new_size);
-	if (!new_ptr)
-		return (NULL);
+	if (ptr == NULL)
+		ptr = malloc(new_size);
 
-	_memcpy(new_ptr, ptr, old_size < new_size ? old_size : new_size);
+	if (new_size == old_size)
+		return (ptr);
+
 	free(ptr);
+	ptr = malloc(new_size);
 
-	return (new_ptr);
+	return (ptr);
 }

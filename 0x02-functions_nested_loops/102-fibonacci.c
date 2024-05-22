@@ -1,28 +1,25 @@
 #include <stdio.h>
-
 /**
- * main - entry point
+ * main - Entry point
  *
- * Return: Always 0.
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
 	int i;
-	long int a = 1;
-	long int b = 2;
+	long int fibonacci[50];
 
-	for (i = 0; i < 50; ++i)
+	fibonacci[0] = 1;
+	fibonacci[1] = 2;
+	printf("%ld, %ld, ", fibonacci[0], fibonacci[1]);
+
+	for (i = 2; i < 50; i++)
 	{
-		printf("%ld", a);
-		if (i < 49)
-		{
-			b += a;
-			a = b - a;
-			printf(", ");
-		}
+		fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
+		if (i == 49)
+			printf("%ld\n", fibonacci[i]);
+		else
+			printf("%ld, ", fibonacci[i]);
 	}
-
-	putchar('\n');
-
 	return (0);
 }

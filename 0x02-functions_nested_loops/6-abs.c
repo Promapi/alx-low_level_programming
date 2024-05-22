@@ -1,12 +1,14 @@
 #include "main.h"
-
 /**
- * _abs - compute the absolute value of a number
- * @i: The value to test
- *
- * Return: The absolute value of i.
+ *_abs - Check Main
+ * @r: An integre input
+ * Description: This function returns absolute value of a number
+ * Return: Absolut value of number r
  */
-int _abs(int i)
+int _abs(int r)
 {
-	return (i < 0 ? -i : i);
+	if (r >= 0)
+	return (r);
+	else
+		return (r * -1);
 }

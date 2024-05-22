@@ -1,18 +1,17 @@
 #include <stdio.h>
-
 /**
- * main - entry point
- *
- * Description: Print numbers 0 to 9 on one line
+ * main - main block
+ * Description: Print all numbers of base 10, starting from 0.
  * Return: 0
  */
 int main(void)
 {
-	char i;
+	int i;
 
-	for (i = '0'; i <= '9'; ++i)
-		putchar(i);
-
+	for (i = 0; i < 10; i++)
+	{
+		printf("%i", i);
+	}
 	putchar('\n');
 
 	return (0);

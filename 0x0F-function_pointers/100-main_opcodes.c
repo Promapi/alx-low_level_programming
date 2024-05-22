@@ -2,16 +2,16 @@
 #include <stdlib.h>
 
 /**
- * main - print opcodes of this function
- * @argc: the size of the argument vector
- * @argv: the argument vector
+ * main - check the code for ALX students.
+ * @argc: argument count.
+ * @argv: argument vector.
  *
- * Return: Always 0
+ * Return: Always 0.
  */
 int main(int argc, char *argv[])
 {
-	int b;
-	char *mem = (char *) main;
+	char *opc = (char *) main;
+	int i, nbytes;
 
 	if (argc != 2)
 	{
@@ -19,16 +19,21 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 
-	b = atoi(argv[1]);
+	nbytes = atoi(argv[1]);
 
-	if (b < 0)
+	if (nbytes < 0)
 	{
 		printf("Error\n");
 		exit(2);
 	}
 
-	while (b--)
-		printf("%02x%c", *mem++ & 0xff, b ? ' ' : '\n');
+	for (i = 0; i < nbytes; i++)
+	{
+		printf("%02x", opc[i] & 0xFF);
+		if (i != nbytes - 1)
+			printf(" ");
+	}
 
+	printf("\n");
 	return (0);
 }

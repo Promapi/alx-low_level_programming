@@ -1,39 +1,44 @@
 #include "main.h"
 
 /**
- * strend - locate the end of a string
- * @s: the string to locate the end of
- *
- * Return: a pointer to the terminating null byte of s
+ * _strlen_recursion - returns the length of a string.
+ * @s: string
+ * Return: the length of a string.
  */
-char *strend(char *s)
+int _strlen_recursion(char *s)
 {
-	return (*s ? strend(s + 1) : s);
-}
-
-/**
- * __is_palindrome - helper for is_palindrome
- * @first: a pointer to the first character of the string
- * @last: a pointer to the last (non-null) character of the string
- *
- * Return: 1 if the string is a palindrome, otherwise 0
- */
-int __is_palindrome(char *first, char *last)
-{
-	if (first > last)
-		return (1);
-	if (*first != *last)
+	if (*s == '\0')
 		return (0);
-	return (__is_palindrome(first + 1, last - 1));
+	else
+		return (1 + _strlen_recursion(s + 1));
 }
 
 /**
- * is_palindrome - check if a string is a palindrome
- * @s: a pointer to the string to check
- *
- * Return: 1 if the string is a palindrome, otherwise 0
+ * comparator - compares each character of the string.
+ * @s: string
+ * @n1: smallest iterator.
+ * @n2: biggest iterator.
+ * Return: .
+ */
+int comparator(char *s, int n1, int n2)
+{
+	if (*(s + n1) == *(s + n2))
+	{
+		if (n1 == n2 || n1 == n2 + 1)
+			return (1);
+		return (0 + comparator(s, n1 + 1, n2 - 1));
+	}
+	return (0);
+}
+
+/**
+ * is_palindrome - detects if a string is a palindrome.
+ * @s: string.
+ * Return: 1 if s is a palindrome, 0 if not.
  */
 int is_palindrome(char *s)
 {
-	return (*s ? __is_palindrome(s, strend(s) - 1) : 1);
+	if (*s == '\0')
+		return (1);
+	return (comparator(s, 0, _strlen_recursion(s) - 1));
 }

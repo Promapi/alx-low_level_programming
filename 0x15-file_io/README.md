@@ -1,28 +1,14 @@
-### C PROGRAMMING PROJECT FILE I/O
+# C - File I/O
 
-
-In this project, I learned about the three standard file descriptors and there `POSIX` names as well as the difference between function and system calls. I
+In this project, I learned about the three standard file descriptors and their
+`POSIX` names as well as the difference between function and system calls. I
 practiced using the I/O system calls `open`, `close`, `read`, and `write`
 and the flags `O_RDONLY`, `WR_ONLY`, and `O_RDWR` to create, open, close,
 read, write, set permissions of files in C.
-`0_RDWR` is equal 2.
-
-## File descriptors
-
-| Integer value                      | Name                                                            |   `<unistd.h>` symbolic constant     | `<stdio.h>` file stream |
-| ------------------------- | -------------------------------------------------------------------- | -----------------| --------------|
-| 0      | Standard Input       | STDIN_FILENO | stdin   |
-| 2      | Standard Output      |   STDOUT_FILENO | stdout |
-| 3   | Standard Error | STDERR_FILENO| stderr |
-
-
-## Tests :heavy_check_mark:
-
-* [tests](./tests): Folder of test files. Provided by alx-intranet.
 
 ## Header File :file_folder:
 
-* [holberton.h](./holberton.h): Header file containing prototypes for all functions
+* [main.h](./main.h): Header file containing prototypes for all functions
 written in the project.
 
 | File                      | Prototype                                                            |
@@ -99,4 +85,3 @@ written in the project.
   * Format is identical to `readelf -h` (version `2.26.1`).
   * If an error occurs or the file is not an `ELF` file, the function displays a
   corresponding error message to `stderr` and exits with a status value of `98`.
-
